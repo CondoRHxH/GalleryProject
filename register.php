@@ -11,15 +11,27 @@
 	}
 
 	if(isset($_POST['submit'])){
-		if($_POST['pop'] == ''){
+		if($_POST['name'] == '' || $_POST['email'] == '' || $_POST['password'] =='' ){
 			echo "3mr 3mr ajmi";
 		} else {
-			$email = $_POST['pop'];		
+			$name = $_POST['name'];
+			$email = $_POST['email'];		
+			$password = $_POST['password'];		
 
-			$insert = $conn->prepare("INSERT INTO users(email) VALUES (:pop) ");
 
-			$insert->execute([":pop" => $email ]);
+			$insert = $conn->prepare("INSERT INTO users(name,email,password) 
+				VALUES (:name,:email,:password) ");
 
+			$insert->execute([":name" => $name,
+			":email" => $email,
+			":password" => password_hash($password, PASSWORD_DEFAULT),
+			]);
+
+		$_SESSION['username'] = $name; // You can also use email if you prefer
+		$_SESSION['email'] = $email;
+
+		header("location:index.php");
+		exit();
 		}
 
 	}  
@@ -38,8 +50,16 @@
 		<main class="form-signin w-50 m-auto">
 			<h1 class="h3 mt-5 fw-normal text-center">Please Register</h1>
 			<form method="post" action="register.php" >
-			<label for="exampleInputEmail1" class="form-label mt-4">HYYYyy</label>
-			<input type="text" name="pop" class="form-control">
+
+				<label for="exampleInputEmail1" class="form-label mt-4">Name</label>
+				<input type="text" name="name" class="form-control">
+
+				<label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+				<input type="text" name="email" class="form-control">
+
+				<label for="exampleInputEmail1" class="form-label mt-4">Password</label>
+				<input type="Password" name="password" class="form-control">
+
 			<button type="submit" name="submit" class="btn btn-primary mt-3">Register</button>
 		</form>
 		</main>
