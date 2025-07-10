@@ -1,7 +1,8 @@
 <?php
 
+	session_start();
 
-	include "header.php";	
+	// include "header.php";	
 
 	require "config.php";
 
@@ -52,13 +53,15 @@
 			<form method="post" action="register.php" >
 
 				<label for="exampleInputEmail1" class="form-label mt-4">Name</label>
-				<input type="text" name="name" class="form-control">
+				<input type="text" name="name" class="form-control" placeholder="name@example.com">
 
 				<label for="exampleInputEmail1" class="form-label mt-4">Email</label>
 				<input type="text" name="email" class="form-control">
 
 				<label for="exampleInputEmail1" class="form-label mt-4">Password</label>
-				<input type="Password" name="password" class="form-control">
+				<input type="Password" name="password" class="form-control"> <br>
+
+				<h6>Already have an account ? <span><a href="login.php">Login</a></span></h6>
 
 			<button type="submit" name="submit" class="btn btn-primary mt-3">Register</button>
 		</form>

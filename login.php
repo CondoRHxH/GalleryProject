@@ -1,5 +1,10 @@
 <?php
-	require "header.php";
+
+
+	
+	session_start();
+
+	// require "header.php";
 	require "config.php";
 
 
@@ -49,7 +54,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 	<title></title>
 </head>
 <body>
@@ -61,7 +66,10 @@
 			<input type="text" name="email" class="form-control mt-3">
 
 			<label class="">Password</label>
-			<input type="password" name="password" class="form-control mt-3">
+			<input type="password" name="password" class="form-control mt-3"> <br>
+
+
+			<h6>Don't have an account ? <span><a href="register.php">Register</a></span></h6>
 
 			<button type="submit" name="submit" class="btn btn-primary mt-3">Login</button>
 		</form>
